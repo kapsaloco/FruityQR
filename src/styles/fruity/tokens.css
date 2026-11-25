@@ -1,0 +1,36 @@
+:root {
+  color-scheme: light;
+  --fr-sky-050: #f3fbff; --fr-sky-100: #e1f4ff; --fr-sky-200: #bce8ff;
+  --fr-sky-300: #87d5fb; --fr-sky-400: #4bb9ef; --fr-sky-500: #1599d6;
+  --fr-sky-700: #08618f; --fr-sky-900: #123b56;
+  --fr-text: #17364b; --fr-text-muted: #456176; --fr-text-on-strong: #fff;
+  --fr-surface-solid: #f3f9fd; --fr-surface-raised: #f9fdff; --fr-surface-well: #fff;
+  --fr-glass-frame: rgb(201 232 250 / 82%); --fr-glass-panel: rgb(219 246 255 / 96%);
+  --fr-border: #4b91b9; --fr-border-soft: #71b5d8; --fr-border-highlight: rgb(255 255 255 / 90%);
+  --fr-focus: #075cb9;
+  --fr-success: #21632d; --fr-success-surface: #edf9e9; --fr-success-border: #608b56;
+  --fr-error: #a52126; --fr-error-surface: #fff1f0; --fr-error-border: #bb6768;
+  --fr-warning: #754b08; --fr-warning-surface: #fff7df;
+  --fr-progress-deep: #388a1b; --fr-progress-mid: #76cb35; --fr-progress-light: #d4f7a3;
+  --fr-shadow-color: rgb(17 58 86 / 20%);
+  --fr-font-ui: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --fr-font-mono: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  --fr-space-1: 4px; --fr-space-2: 8px; --fr-space-3: 12px;
+  --fr-space-4: 16px; --fr-space-5: 24px; --fr-space-6: 32px;
+  --fr-radius-control: 5px; --fr-radius-panel: 9px; --fr-radius-frame: 10px;
+  --fr-duration-fast: 120ms; --fr-duration-normal: 180ms;
+  --fr-ease: cubic-bezier(.2,.7,.2,1);
+  --fr-shadow-panel: 0 4px 12px rgb(9 103 165 / 17%);
+  --fr-shadow-control: 0 1px 2px rgb(17 58 86 / 18%);
+}
+:root[data-platform="macos"] { --fr-font-ui: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+
+:root {
+  --fr-water-edge: #388fbe;
+  --fr-water-light: #edfcff;
+  --fr-water-pale: #d2f3ff;
+  --fr-water-blue: #7bd3f7;
+  --fr-water-deep: #20a5e4;
+  --fr-water-gloss: linear-gradient(180deg, rgb(255 255 255 / 88%), rgb(255 255 255 / 28%) 46%, rgb(95 202 249 / 16%));
+  --fr-water-rim: inset 0 1px 0 #fff, inset 0 0 0 1px rgb(255 255 255 / 45%);
+}

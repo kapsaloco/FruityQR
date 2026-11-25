@@ -1,0 +1,95 @@
+/* Keep utility overrides in the final layer so hover specificity cannot
+   re-enable animation after the user's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  .fr-button--hero, .fr-button--hero::after,
+  .fr-verdict, .fr-verdict::before,
+  .fr-choice--chip, .fr-choice--chip::after,
+  .fr-choice--chip input, .fr-choice--chip input::before,
+  .fr-step, .fr-local-badge .fr-statusbar__light,
+  .fr-help-button > span, .fr-verdict__badge {
+    animation: none; transition: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fr-progress, .fr-button, .fr-spinner { animation: none; transition: none; }
+  .fr-progress:not([value]) { background-position: 50% 0; }
+}
+@media (prefers-contrast: more) {
+  .fr-panel, .fr-well, .fr-input, .fr-select { border-color: var(--fr-text); background: var(--fr-surface-well); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  body { background: var(--fr-surface-solid); }
+  .fr-window { background: linear-gradient(#c5efff, #76c8ed); }
+  .fr-panel { background: var(--fr-surface-raised); }
+}
+@media (forced-colors: active) {
+  body, .fr-window, .fr-panel, .fr-well, .fr-input, .fr-select, .fr-status, .fr-badge { color: CanvasText; background: Canvas; border-color: CanvasText; box-shadow: none; }
+  .fr-button { color: ButtonText; background: ButtonFace; border-color: ButtonText; box-shadow: none; }
+  .fr-button:disabled, .fr-input:disabled, .fr-select:disabled, .fr-choice:has(input:disabled) { color: GrayText; border-color: GrayText; background: Canvas; }
+  .fr-text--muted, .fr-help, .fr-error-text { color: CanvasText; }
+  .fr-spinner { border-color: GrayText; border-top-color: Highlight; }
+  :focus-visible { outline-color: Highlight; }
+  .fr-progress, .fr-progress:not([value]) { background: Canvas; border-color: CanvasText; animation: none; box-shadow: none; }
+  .fr-progress::-webkit-progress-bar { background: Canvas; }
+  .fr-progress::-webkit-progress-value { background: Highlight; box-shadow: none; }
+  .fr-progress::-moz-progress-bar { background: Highlight; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fr-meter__fill, .fr-meter__fill::after { animation: none !important; transition: none; }
+  .fr-meter__fill::after { display: none; }
+  .fr-meter[data-state="indeterminate"] .fr-meter__fill { transform: translateX(90%); }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .fr-button--glass, .fr-button--glass-quiet { background: var(--fr-surface-raised); }
+}
+@media (forced-colors: active) {
+  .fr-button:not(:disabled):hover, .fr-button:not(:disabled):active { color: ButtonText; border-color: Highlight; background: ButtonFace; box-shadow: none; }
+  .fr-meter { border-color: CanvasText; background: Canvas; box-shadow: none; }
+  .fr-meter__fill { background: Highlight; box-shadow: none; }
+  .fr-meter__fill::after { display: none; }
+}
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  .fr-toolbar, .fr-tabs__list, .fr-segments, .fr-dialog, .fr-toast,
+  .fr-list-row, .fr-disclosure, .fr-statusbar, .fr-empty { background: var(--fr-surface-solid); border-color: var(--fr-text); }
+  .fr-button { background: var(--fr-surface-raised); }
+}
+@media (forced-colors: active) {
+  .fr-panel-header, .fr-toolbar, .fr-tabs__list, .fr-tab, .fr-segments,
+  .fr-segment span, .fr-dialog, .fr-dialog__header, .fr-dialog__body,
+  .fr-dialog__actions, .fr-tooltip, .fr-toast, .fr-empty, .fr-empty__icon,
+  .fr-list-row, .fr-disclosure, .fr-disclosure > summary, .fr-statusbar {
+    color: CanvasText; background: Canvas; border-color: CanvasText; box-shadow: none;
+  }
+  .fr-tab[aria-selected="true"], .fr-segment input:checked + span,
+  .fr-list-row:has(input:checked), .fr-list-row[aria-current="true"] {
+    border-color: Highlight; outline: 1px solid Highlight; background: Canvas; color: CanvasText; box-shadow: none;
+  }
+  .fr-tab:not(:disabled):hover, .fr-segment input:not(:disabled) + span:hover { color: ButtonText; background: ButtonFace; border-color: Highlight; box-shadow: none; }
+  .fr-tab:disabled, .fr-segment input:disabled + span { color: GrayText; }
+  .fr-segment input:focus-visible + span { outline-color: Highlight; }
+  .fr-statusbar__light { border-color: CanvasText; background: Highlight; }
+  .fr-dialog::backdrop { background: Canvas; opacity: .7; }
+}
+
+/* The wet-glass highlights give way to opaque surfaces when requested. */
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  .fr-panel-header, .fr-toolbar, .fr-tabs__list, .fr-segments, .fr-dialog__header,
+  .fr-dialog__actions, .fr-tooltip, .fr-empty, .fr-list-row, .fr-disclosure > summary,
+  .fr-statusbar, .fr-status, .fr-badge { background: var(--fr-surface-solid); box-shadow: none; }
+}
+@media (forced-colors: active) {
+  .fr-subheading { color: CanvasText; }
+  .fr-panel-header, .fr-status, .fr-badge { background: Canvas; box-shadow: none; }
+}
+
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  .fr-dropzone, .fr-file, .fr-value, .fr-operation, .fr-titlebar { background: var(--fr-surface-solid); box-shadow: none; border-color: var(--fr-text); }
+}
+@media (forced-colors: active) {
+  .fr-dropzone, .fr-dropzone[data-state="dragging"], .fr-file, .fr-value,
+  .fr-value__text, .fr-comparison, .fr-comparison .fr-comparison__verdict,
+  .fr-operation, .fr-titlebar, .fr-key { color: CanvasText; background: Canvas; border-color: CanvasText; box-shadow: none; }
+  .fr-dropzone__icon { color: CanvasText; filter: none; }
+  .fr-caption, .fr-caption:not(:disabled):hover { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .fr-caption:disabled { color: GrayText; opacity: 1; }
+}

@@ -1,0 +1,41 @@
+.fr-tabs__list { position: relative; }
+
+@media (forced-colors: none) {
+  .fr-tabs__list[data-fr-tab-highlight]::before {
+    content: "";
+    position: absolute;
+    top: var(--fr-tab-highlight-top);
+    left: 0;
+    width: var(--fr-tab-highlight-width);
+    height: var(--fr-tab-highlight-height);
+    transform: translateX(var(--fr-tab-highlight-left));
+    border: 1px solid #598ba7;
+    border-radius: 5px;
+    background: linear-gradient(#f9ffff, #d6f3ff 45%, #a6e2fc);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 3px rgb(17 58 86 / 14%);
+    pointer-events: none;
+  }
+
+  .fr-tabs__list[data-fr-tab-highlight] .fr-tab { position: relative; }
+
+  .fr-tabs__list[data-fr-tab-highlight] .fr-tab[aria-selected="true"] {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fr-tabs__list[data-fr-tab-highlight]::before {
+    transition: transform 320ms cubic-bezier(.3, .65, .25, 1), width 320ms cubic-bezier(.3, .65, .25, 1);
+  }
+}
+
+.fr-dialog--scroll-body[open] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fr-dialog--scroll-body > :is(.fr-dialog__header, .fr-dialog__actions) { flex-shrink: 0; }
+.fr-dialog--scroll-body > .fr-dialog__body { min-height: 0; overflow-y: auto; scrollbar-gutter: auto; }

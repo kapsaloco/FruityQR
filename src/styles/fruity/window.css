@@ -1,0 +1,4 @@
+.fr-window { min-height: 100dvh; isolation: isolate; background: radial-gradient(ellipse at 12% 0%, rgb(255 255 255 / 85%), transparent 52%), linear-gradient(125deg, transparent 28%, rgb(255 255 255 / 24%) 29%, rgb(255 255 255 / 8%) 43%, transparent 44%), linear-gradient(180deg, #97e2ff, #29a9e4); }
+:root[data-material="solid"] .fr-window { background: radial-gradient(ellipse at 12% 0%, #fff, transparent 52%), linear-gradient(180deg, #97e2ff, #29a9e4); }
+:root:is([data-material="mica"], [data-material="acrylic"], [data-material="mac-vibrancy"]) body { background: transparent; }
+:root:is([data-material="mica"], [data-material="acrylic"], [data-material="mac-vibrancy"]) .fr-window { background: radial-gradient(ellipse at 12% 0%, rgb(255 255 255 / 85%), transparent 52%), linear-gradient(125deg, transparent 28%, rgb(255 255 255 / 24%) 29%, transparent 44%), linear-gradient(180deg, rgb(186 239 255 / 82%), rgb(97 191 235 / 82%)); }

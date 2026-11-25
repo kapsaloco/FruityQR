@@ -1,0 +1,4 @@
+/* FruityUI v1.1 uses the unchanged 1.0 foundation. */
+@import url("../index.css");
+@import url("./components.css") layer(fruity);
+@import url("./polish.css") layer(fruity);

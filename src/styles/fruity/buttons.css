@@ -1,0 +1,80 @@
+/* Shared glass controls. Designed for light aqua surfaces. */
+.fr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  isolation: isolate;
+  min-height: 36px;
+  padding: 8px 17px;
+  border: 1px solid #568ba7;
+  border-radius: 7px;
+  color: var(--fr-text);
+  font: 600 14px/1.25 var(--fr-font-ui);
+  text-decoration: none;
+  background: linear-gradient(180deg, rgb(255 255 255 / 65%), rgb(207 241 255 / 22%) 52%, rgb(90 182 225 / 20%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 95%),
+    0 1px 2px rgb(17 58 86 / 10%);
+  cursor: pointer;
+  transition: border-color var(--fr-duration-fast) var(--fr-ease),
+    box-shadow var(--fr-duration-fast) var(--fr-ease);
+}
+
+.fr-button--primary {
+  min-height: 38px;
+  border-color: #5385a5;
+  background: linear-gradient(180deg, rgb(236 252 255 / 82%), rgb(104 211 255 / 46%) 48%, rgb(15 159 224 / 38%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 90%),
+    0 2px 4px rgb(28 100 142 / 14%);
+}
+
+.fr-button--compact {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 5px 11px;
+}
+
+/* Glass variants borrow the backdrop's color. Use over light, readable surfaces. */
+.fr-button--glass {
+  border-color: #568ba7;
+  background: linear-gradient(180deg, rgb(255 255 255 / 65%), rgb(207 241 255 / 22%) 52%, rgb(90 182 225 / 20%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 90%), 0 2px 5px rgb(16 100 151 / 12%);
+}
+.fr-button--glass-quiet {
+  border-color: #769cad;
+  background: linear-gradient(180deg, rgb(255 255 255 / 35%), rgb(255 255 255 / 8%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%);
+}
+
+@media (hover: hover) {
+  .fr-button:not(:disabled):hover {
+    border-color: #0879b8;
+    background: linear-gradient(180deg, rgb(255 255 255 / 80%), rgb(144 224 255 / 58%) 42%, rgb(22 169 238 / 46%));
+    box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgb(66 177 241 / 24%), 0 0 13px rgb(20 155 230 / 42%), 0 3px 6px rgb(9 100 157 / 18%);
+  }
+  .fr-button--primary:not(:disabled):hover {
+    border-color: #066aa4;
+    background: linear-gradient(180deg, rgb(238 252 255 / 92%), rgb(89 204 255 / 72%) 42%, rgb(0 148 225 / 60%));
+    box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgb(66 177 241 / 35%), 0 0 17px rgb(0 157 238 / 50%), 0 3px 7px rgb(9 100 157 / 22%);
+  }
+  .fr-button--glass:not(:disabled):hover,
+  .fr-button--glass-quiet:not(:disabled):hover {
+    background: linear-gradient(180deg, rgb(255 255 255 / 80%), rgb(144 224 255 / 58%) 42%, rgb(22 169 238 / 46%));
+  }
+}
+/* Pressed follows hover so the inset state always wins. */
+.fr-button:not(:disabled):active {
+  border-color: #236a94;
+  background: linear-gradient(180deg, rgb(32 151 211 / 40%), rgb(213 245 255 / 65%));
+  box-shadow: inset 0 2px 4px rgb(17 58 86 / 22%), 0 0 5px rgb(20 155 230 / 22%);
+}
+.fr-button--glass:not(:disabled):active,
+.fr-button--glass-quiet:not(:disabled):active {
+  background: linear-gradient(180deg, rgb(32 151 211 / 40%), rgb(213 245 255 / 65%));
+}
+
+.fr-button--glass:disabled, .fr-button--glass-quiet:disabled { color: #61717d; border-color: #afc0cc; background: #edf3f7; box-shadow: none; }
+
+.fr-button:disabled { color: #61717d; border-color: #afc0cc; background: #edf3f7; box-shadow: none; cursor: default; }
+.fr-button[aria-busy="true"] { cursor: progress; }

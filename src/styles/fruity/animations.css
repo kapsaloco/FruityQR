@@ -1,0 +1,11 @@
+@keyframes fr-spin { to { transform: rotate(360deg); } }
+@keyframes fr-meter-sheen {
+  0% { transform: translateX(-100%); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+@keyframes fr-meter-sweep {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(310%); }
+}

@@ -1,0 +1,14 @@
+.fr-field { display: grid; gap: 6px; min-width: 0; }
+.fr-label, .fr-legend { font-weight: 600; }
+.fr-input, .fr-select { width: 100%; min-width: 0; min-height: 36px; padding: 7px 10px; color: var(--fr-text); border: 1px solid var(--fr-border); border-radius: var(--fr-radius-control); background: linear-gradient(#d6f0fc, #f3fcff 12px); box-shadow: inset 0 1px 3px rgb(24 59 82 / 12%), 0 1px 0 #fff; }
+textarea.fr-input { min-height: 80px; resize: vertical; }
+.fr-input::placeholder { color: var(--fr-text-muted); opacity: 1; }
+.fr-input[aria-invalid="true"] { border-color: var(--fr-error-border); }
+.fr-input:disabled, .fr-select:disabled { background: #e7eef3; color: #61717d; cursor: default; }
+.fr-help { color: var(--fr-text-muted); font-size: 12px; line-height: 1.4; }
+.fr-error-text { color: var(--fr-error); font-size: 12px; line-height: 1.4; }
+.fr-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.fr-legend { padding: 0; margin-bottom: 8px; }
+.fr-choice { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; cursor: pointer; }
+.fr-choice input { width: 16px; height: 16px; margin: 0; accent-color: #087bbd; flex-shrink: 0; }
+.fr-choice:has(input:disabled) { color: #61717d; cursor: default; }

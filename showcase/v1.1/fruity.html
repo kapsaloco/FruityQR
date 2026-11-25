@@ -1,0 +1,194 @@
+﻿<!doctype html>
+<html lang="en" data-material="solid">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FruityUI 1.1.1 - Components</title>
+<script type="module">import '/src/styles/fruity/v1.1/index.css'; import './fruity-preview.css'; import './fruity-preview.ts'; import './new-examples.ts';</script></head>
+<body class="fr-window"><main class="preview"><nav class="preview-nav" aria-label="Component showcase"><a href="./fruity.html" aria-current="page">Components</a><a href="./workflow.html">File workflows</a></nav>
+<header class="preview-stack"><p class="fr-text--small fr-text--muted">FRUITYUI <span data-fruity-ui-version>v1.1.1</span></p><h1 class="fr-heading">Components</h1><p class="fr-text--muted">The FruityHash foundation, FruityPalette controls, and FruityQR refinements. The workflow page demonstrates file operations.</p></header>
+<section class="fr-panel fr-panel--glass preview-stack"><header class="fr-brand"><div class="fr-brand__identity"><img class="fr-brand__icon" src="../assets/fruityhash.png" alt="" width="52" height="52"><div><h1>FruityHash</h1></div></div><span class="fr-local-badge"><span class="fr-statusbar__light" aria-hidden="true"></span>Local</span></header><div class="fr-section-heading"><h2><span class="fr-step" aria-hidden="true">1</span>Section heading</h2></div><p class="fr-help"><code>fr-panel--glass · fr-section-heading · fr-step · fr-brand · fr-local-badge</code></p></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Buttons</h2><div class="preview-glass preview-row"><button class="fr-button fr-button--primary fr-button--hero">Primary action</button><button class="fr-button">Glass action</button><button class="fr-button fr-button--glass-quiet">Quiet glass</button><button class="fr-button fr-button--compact">Copy</button><button class="fr-button fr-button--compact fr-button--copy-all" disabled>Copy all</button><button class="fr-button fr-button--primary fr-button--hero" disabled>Unavailable</button><button class="fr-button" disabled aria-busy="true"><span class="fr-spinner" aria-hidden="true"></span>Working…</button></div><p class="fr-help">Unavailable actions stay disabled until their requirements are met. Tab through controls to inspect keyboard focus.</p></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Text and inputs</h2><div class="fr-field"><label class="fr-label" for="expected-value">Expected value (app input)</label><div class="fr-input-group"><textarea class="fr-input fr-mono" id="expected-value" rows="1" spellcheck="false" placeholder="Paste an expected checksum..."></textarea></div></div><div class="fr-field"><label class="fr-label" for="normal">Text input</label><input class="fr-input" id="normal" placeholder="Enter a value…" aria-describedby="normal-help"><p class="fr-help" id="normal-help">Helper text stays close to its control.</p></div><div class="fr-field"><label class="fr-label" for="invalid">Invalid input</label><input class="fr-input" id="invalid" value="Example value" aria-invalid="true" aria-describedby="invalid-help"><p class="fr-error-text" id="invalid-help">Enter a valid value to continue.</p></div><div class="fr-field"><label class="fr-label" for="notes">Multiline text</label><textarea class="fr-input" id="notes" placeholder="Add a note…"></textarea></div><div class="fr-field"><label class="fr-label" for="appearance">Appearance</label><select class="fr-select" id="appearance"><option>Solid</option><option>Auto</option></select></div><div class="fr-well fr-mono">Monospace strings remain selectable and wrap without truncation. 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef</div><p><span class="fr-badge">Informational label</span></p></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Choice chips</h2><fieldset class="fr-fieldset fr-option-field"><legend class="fr-legend">Include in export</legend><div class="fr-choice-group"><label class="fr-choice fr-choice--chip"><input type="checkbox" checked><span>Documents</span></label><label class="fr-choice fr-choice--chip"><input type="checkbox"><span>Images</span> <span class="fr-badge--subtle">Optional</span></label><label class="fr-choice fr-choice--chip"><input type="checkbox" disabled><span>Unavailable</span></label></div></fieldset><p class="fr-help"><code>fr-choice fr-choice--chip</code> wraps a native checkbox. Group options with a fieldset and legend.</p></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Loading and progress</h2><div class="fr-task__progress"><p>Calculating · 42%</p><div class="fr-meter" id="progress" role="progressbar" aria-label="Calculating" aria-valuemin="0" aria-valuemax="100" aria-valuenow="42" data-state="active" style="--fr-progress-value:42%"><div class="fr-meter__fill"></div></div><p class="fr-help">Preview values only · 42 MiB of 100 MiB</p><p>Opening file…</p><div class="fr-meter" id="opening" role="progressbar" aria-label="Opening file" data-state="indeterminate"><div class="fr-meter__fill"></div></div><p>Calculation complete · 100%</p><div class="fr-meter" id="complete" role="progressbar" aria-label="Calculation complete" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" data-state="complete" style="--fr-progress-value:100%"><div class="fr-meter__fill"></div></div></div></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Feedback</h2><p class="fr-status">Ready · Waiting for your next action.</p><p class="fr-status fr-status--success">✓ Success · The operation completed.</p><p class="fr-status fr-status--warning">! Attention · Check the selected options.</p><p class="fr-status fr-status--error">× Error · The operation could not be completed.</p><h3 class="fr-subheading">Prominent verdict</h3><p class="fr-help">Use compact status messages for routine feedback, and the larger verdict for a completed result. These are two sizes of feedback, not competing themes.</p>
+<div class="fr-verdict" data-state="match"><div class="fr-verdict__content"><p class="fr-verdict__message">Values match</p><p class="fr-verdict__detail">The operation completed successfully.</p></div><span class="fr-verdict__badge">Success</span></div>
+<div class="fr-verdict" data-state="mismatch"><div class="fr-verdict__content"><p class="fr-verdict__message">Values differ</p><p class="fr-verdict__detail">Review the selected inputs.</p></div><span class="fr-verdict__badge">Mismatch</span></div>
+<div class="fr-verdict" data-state="invalid"><div class="fr-verdict__content"><p class="fr-verdict__message">Check your input</p><p class="fr-verdict__detail">Provide a supported value to continue.</p></div></div>
+<details class="fr-disclosure"><summary>Copy the verdict markup</summary><div class="fr-disclosure__body"><pre class="fr-mono">&lt;div class="fr-verdict" data-state="match"&gt;
+  &lt;div class="fr-verdict__content"&gt;
+    &lt;p class="fr-verdict__message"&gt;Values match&lt;/p&gt;
+    &lt;p class="fr-verdict__detail"&gt;Details here.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;span class="fr-verdict__badge"&gt;Success&lt;/span&gt;
+&lt;/div&gt;</pre></div></details></section>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="headers-title">
+  <header class="fr-panel-header"><div class="fr-panel-header__title"><h2 class="fr-subheading" id="headers-title">Panel headers and toolbars</h2><p class="fr-help">Aqua framing, white highlights, and room for useful actions.</p></div><span class="fr-badge">Ready</span></header>
+  <div class="fr-toolbar" role="group" aria-label="Example actions"><div class="fr-toolbar__group"><button class="fr-button fr-button--primary" data-preview-toast="New item created. Preview only.">New item</button><button class="fr-button" data-preview-toast="Your changes were saved. Preview only.">Save</button></div><span class="fr-toolbar__spacer" aria-hidden="true"></span><button class="fr-button fr-button--compact" data-fr-open-dialog="preview-dialog">Settings</button></div>
+</section>
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="tabs-title"><h2 class="fr-subheading" id="tabs-title">Tabs and segmented controls</h2>
+  <div class="fr-tabs" data-fr-tabs><div class="fr-tabs__list" role="tablist" aria-label="Preview views"><button class="fr-tab" id="overview-tab" role="tab" aria-selected="true" aria-controls="overview-panel">Overview</button><button class="fr-tab" id="activity-tab" role="tab" aria-selected="false" aria-controls="activity-panel" tabindex="-1">Activity</button><button class="fr-tab" id="history-tab" role="tab" aria-selected="false" aria-controls="history-panel" tabindex="-1" disabled>History</button></div>
+  <div class="fr-tabs__panel" id="overview-panel" role="tabpanel" aria-labelledby="overview-tab" tabindex="0"><p>A calm work surface beneath a brighter blue navigation strip.</p></div><div class="fr-tabs__panel" id="activity-panel" role="tabpanel" aria-labelledby="activity-tab" tabindex="0" hidden><p>No recent activity. This is the second tab panel.</p></div><div class="fr-tabs__panel" id="history-panel" role="tabpanel" aria-labelledby="history-tab" hidden><p>History is unavailable.</p></div></div>
+  <p class="fr-help">Click a tab or focus it and press Left or Right. The highlight slides along a single row and switches instantly with reduced motion or when the tabs wrap.</p>
+  <fieldset class="fr-fieldset"><legend class="fr-legend">View density</legend><div class="fr-segments"><label class="fr-segment"><input type="radio" name="density" value="comfortable" checked><span>Comfortable</span></label><label class="fr-segment"><input type="radio" name="density" value="compact"><span>Compact</span></label><label class="fr-segment"><input type="radio" name="density" value="automatic" disabled><span>Automatic</span></label></div></fieldset>
+</section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Dialogs, tooltips, and notifications</h2><div class="preview-row"><button class="fr-button fr-button--primary" data-fr-open-dialog="preview-dialog">Open dialog</button><button class="fr-button" data-fr-tooltip="preview-tooltip" aria-describedby="preview-tooltip">About local storage</button><button class="fr-button" data-preview-toast="Copied to clipboard. Preview notification only.">Show notification</button></div><p class="fr-help">Tooltips appear on hover or focus; Escape dismisses them. Notifications stay until dismissed.</p>
+<div class="fr-tooltip" id="preview-tooltip" role="tooltip" hidden>Files stay on your device. This explanation is available with keyboard focus too.</div></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Empty state</h2><div class="fr-empty--inline"><span class="fr-empty__emblem" aria-hidden="true">#</span><p>No results yet</p></div><p class="fr-help"><code>fr-empty--inline - fr-empty__emblem</code>. Use this compact summary in a panel.</p></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">List rows</h2><ul class="fr-list"><li class="fr-list-row"><label class="fr-choice"><input type="checkbox" aria-label="Select Project notes"></label><div class="fr-list-row__content"><strong>Project notes</strong><span class="fr-help">Updated today · 24 KiB</span></div><button class="fr-button fr-button--compact" data-preview-toast="Project notes selected for opening. Preview only.">Open notes</button></li><li class="fr-list-row"><label class="fr-choice"><input type="checkbox" checked aria-label="Select Summer collection"></label><div class="fr-list-row__content"><strong>Summer collection</strong><span class="fr-help">Selected · A longer description wraps naturally on smaller windows.</span></div><span class="fr-badge">Local</span></li></ul></section>
+<section class="fr-panel fr-panel--glass preview-stack"><h2 class="fr-subheading">Disclosure sections</h2><details class="fr-disclosure"><summary>Additional details</summary><div class="fr-disclosure__body"><p>Optional information stays tucked away until you need it. Native disclosure works with Enter and Space, without JavaScript.</p></div></details><details class="fr-disclosure" open><summary>Appearance notes</summary><div class="fr-disclosure__body"><p>Clear cyan framing, pale aqua interiors, luminous edges, and small green accents.</p></div></details></section>
+<section class="preview-stack" aria-labelledby="status-title"><h2 class="fr-subheading" id="status-title">Footer</h2><footer class="fr-footer"><span class="fr-footer__status" role="status"><span class="fr-statusbar__light" aria-hidden="true"></span>Ready · Everything is up to date</span><span>Local workspace</span></footer></section>
+<dialog class="fr-dialog" id="preview-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><header class="fr-dialog__header"><h2 class="fr-subheading" id="dialog-title">Workspace settings</h2></header><div class="fr-dialog__body"><p id="dialog-description">A reusable dialog with a native focus trap, Escape to close, and focus returned to the opener.</p><label class="fr-choice"><input type="checkbox" checked>Show helpful status messages</label></div><form method="dialog" class="fr-dialog__actions"><button class="fr-button" value="cancel" autofocus>Cancel</button><button class="fr-button fr-button--primary" value="save">Save settings</button></form></dialog>
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="new-title">
+  <header class="fr-panel-header">
+    <h2 class="fr-subheading" id="new-title">New in 1.1</h2><span class="fr-badge">FruityPalette</span>
+  </header>
+  <p class="fr-help">Try the controls below. The demo does not save or upload data.</p>
+</section>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="glass-select-title">
+  <h2 class="fr-subheading" id="glass-select-title">Glass dropdown</h2>
+  <div class="fr-field preview-select">
+    <span class="fr-label" id="demo-select-label">Harmony</span>
+    <select class="fr-select" id="demo-select" aria-labelledby="demo-select-label">
+      <option>Complementary</option><option>Analogous</option><option>Triadic</option>
+      <option>Split-complementary</option><option>Monochromatic</option>
+    </select>
+    <div class="fr-glass-select" id="demo-select-control" hidden>
+      <button class="fr-button fr-glass-select__trigger" id="demo-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="demo-select-menu" aria-labelledby="demo-select-label demo-select-value" type="button">
+        <span id="demo-select-value"></span><span aria-hidden="true">▾</span>
+      </button>
+      <div class="fr-glass-select__menu" id="demo-select-menu" role="listbox" aria-labelledby="demo-select-label" hidden></div>
+    </div>
+  </div>
+  <p class="fr-help">Open with Enter or an arrow key, navigate with the arrows, and press Esc to close. The original select holds the value.</p>
+  <p class="fr-help"><code>fr-glass-select · fr-glass-select__trigger · fr-glass-select__menu · enhanceSelect()</code></p>
+</section>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="color-controls-title">
+  <h2 class="fr-subheading" id="color-controls-title">Color controls and swatches</h2>
+  <div class="preview-color-controls">
+    <div class="preview-stack">
+      <div class="fr-sv-picker" id="demo-sv" tabindex="0" role="group" aria-label="Saturation and value" aria-describedby="demo-sv-help demo-sv-value">
+        <span class="fr-sv-picker__marker" aria-hidden="true"></span>
+      </div>
+      <label class="fr-label" for="demo-hue">Hue</label>
+      <input class="fr-hue-slider" id="demo-hue" type="range" min="0" max="359.999" step="any" value="196.3">
+      <p class="fr-help" id="demo-sv-help">Use arrow keys to adjust either control. Hold Shift for larger steps.</p>
+      <p class="fr-help" id="demo-sv-value"></p>
+    </div>
+    <div class="preview-stack">
+      <div class="fr-well preview-stack">
+        <div class="fr-color-swatch" id="demo-swatch" aria-hidden="true"></div>
+        <div class="preview-row"><span class="fr-color-chip fr-color-chip--preview" id="demo-chip" aria-hidden="true"></span><strong class="fr-mono" id="demo-hex">#00AEEF</strong></div>
+      </div>
+      <div class="preview-row">
+        <button class="fr-button fr-button--compact" type="button" data-demo-color="#42ADEF"><span class="fr-color-chip fr-color-chip--compact" style="--fr-swatch-color:#42ADEF" aria-hidden="true"></span> #42ADEF</button>
+        <button class="fr-button fr-button--compact" type="button" data-demo-color="#EF8442"><span class="fr-color-chip fr-color-chip--compact" style="--fr-swatch-color:#EF8442" aria-hidden="true"></span> #EF8442</button>
+      </div>
+    </div>
+  </div>
+  <div class="fr-contrast-sample" style="color:#FFFFFF;background-color:#123B56">
+    <strong>Large text preview</strong>
+    <p>This line previews normal text.</p>
+  </div>
+  <p class="fr-help"><code>fr-contrast-sample</code> previews the host's text and background colors.</p>
+  <p class="fr-help"><code>fr-sv-picker · fr-hue-slider · fr-color-swatch · fr-color-chip · --fr-swatch-color</code></p>
+</section>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="feedback-11-title">
+  <h2 class="fr-subheading" id="feedback-11-title">Inline feedback and actions</h2>
+  <div class="fr-field fr-field-divider">
+    <label class="fr-label" for="demo-hex-input">HEX color</label>
+    <input class="fr-input fr-mono" id="demo-hex-input" value="#XYZ" aria-invalid="true" aria-describedby="demo-hex-error">
+    <p class="fr-field-error" id="demo-hex-error" aria-live="polite">Enter three or six hexadecimal digits.</p>
+  </div>
+  <div class="fr-action-notice" id="demo-notice">
+    <div class="fr-action-notice__body"><p>Screen picking is active.</p><p>Press Escape or use Cancel to end this demo.</p></div>
+    <button class="fr-button fr-button--compact fr-button--danger-hover" id="demo-cancel" type="button">Cancel</button>
+  </div>
+  <div class="preview-row">
+    <button class="fr-button" id="demo-restart" type="button">Show notice</button>
+    <button class="fr-button fr-button--danger" data-fr-open-dialog="demo-delete-dialog" type="button">Delete saved palettes…</button>
+  </div>
+  <p class="fr-status-strip" id="demo-status" role="status">Picked #00AEEF.</p>
+  <p class="fr-help"><code>fr-field-error · fr-action-notice · fr-status-strip · fr-button--danger · fr-button--danger-hover</code></p>
+</section>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="scroll-title">
+  <h2 class="fr-subheading" id="scroll-title">Glass disclosure and scrollbar</h2>
+  <details class="fr-disclosure fr-disclosure--glass" open>
+    <summary>Example saved palettes</summary>
+    <div class="fr-disclosure__body">
+      <div class="fr-glass-scrollbar showcase-scroll" tabindex="0" role="region" aria-label="Example saved palettes">
+        <ul class="showcase-saved">
+          <li>Ocean glass</li><li>Orange grove</li><li>Greenhouse</li><li>Evening sky</li><li>Blue bay</li><li>Coral reef</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+  <p class="fr-help"><code>fr-disclosure--glass · fr-glass-scrollbar</code></p>
+</section>
+
+<dialog class="fr-dialog fr-dialog--help" id="demo-delete-dialog" aria-labelledby="demo-delete-title">
+  <header class="fr-dialog__header fr-about-header"><h2 id="demo-delete-title">Delete saved palettes?</h2></header>
+  <div class="fr-dialog__body"><p>This example demonstrates the destructive action style.</p></div>
+  <form class="fr-dialog__actions" method="dialog">
+    <button class="fr-button" value="cancel" autofocus>Cancel</button>
+    <button class="fr-button fr-button--danger" value="delete">Delete</button>
+  </form>
+</dialog>
+
+<section class="fr-panel fr-panel--glass preview-stack" aria-labelledby="scroll-dialog-example-title">
+  <h2 class="fr-subheading" id="scroll-dialog-example-title">Dialog with a scrolling body</h2>
+  <p class="fr-help">Scroll the help content or expand the notices. The header and Done button stay in view.</p>
+  <div class="preview-row"><button class="fr-button" type="button" data-fr-open-dialog="scroll-dialog-demo">Open Help &amp; About</button></div>
+</section>
+
+<dialog class="fr-dialog fr-dialog--help fr-dialog--scroll-body showcase-scroll-dialog" id="scroll-dialog-demo" aria-labelledby="scroll-dialog-title">
+  <header class="fr-dialog__header fr-about-header">
+    <div><h2 id="scroll-dialog-title">Help &amp; About</h2><p class="fr-help">FruityUI <span data-fruity-ui-version>v1.1.1</span></p></div>
+  </header>
+  <div class="fr-dialog__body fr-glass-scrollbar" tabindex="0" role="region" aria-label="Help and notices">
+    <h3 class="fr-subheading">Using the showcase</h3>
+    <p>Open Components to try tabs, buttons, disclosures, and the color picker. Open File workflows to see file selection, progress, and results.</p>
+    <p>Use Tab to move between controls. Use the arrow keys to move between tabs or adjust the color picker.</p>
+    <dl class="fr-shortcuts">
+      <div><dt>Scroll this region</dt><dd><kbd class="fr-key">Arrow keys</kbd></dd></div>
+      <div><dt>Close the dialog</dt><dd><kbd class="fr-key">Esc</kbd></dd></div>
+    </dl>
+    <details class="fr-disclosure">
+      <summary>Licenses and notices</summary>
+      <div class="fr-disclosure__body">
+        <p>FruityUI is provided under the MIT License. The complete license lives alongside the shared source files.</p>
+        <p>Include that license with every copy of the FruityUI source. List the host app’s licenses and third-party notices separately.</p>
+      </div>
+    </details>
+  </div>
+  <form method="dialog" class="fr-dialog__actions">
+    <button class="fr-button fr-button--primary" type="submit" autofocus>Done</button>
+  </form>
+</dialog>
+
+<section class="fr-panel fr-panel--glass preview-stack" id="changelog" aria-labelledby="changelog-title">
+  <h2 class="fr-subheading" id="changelog-title">Changelog</h2>
+  <h3 class="fr-subheading">1.1.1</h3>
+  <ul class="showcase-list">
+    <li>Added a sliding selection highlight to single-row tabs while preserving the existing markup and keyboard controls.</li>
+    <li>Added a dialog layout with a scrolling body and a visible header and footer.</li>
+    <li>Added reuse instructions and an interactive long-dialog example.</li>
+  </ul>
+  <h3 class="fr-subheading">1.1.0</h3>
+  <ul class="showcase-list">
+    <li>Added a glass dropdown with keyboard navigation and a native select as its value source.</li>
+    <li>Added saturation and value controls, a hue slider, and larger swatches and compact color chips.</li>
+    <li>Added a glass scrollbar and a translucent variant of the existing disclosure header.</li>
+    <li>Added an inline error box, action notice, status strip, field dividers, contrast samples, and destructive button styles.</li>
+    <li>Kept the 1.0 components and file workflow examples, and archived the original 1.0 showcase.</li>
+  </ul>
+</section>
+<footer class="fr-footer"><nav aria-label="Last versions">Last versions: <a href="../v1.0/fruity.html">FruityUI 1.0 components</a> · <a href="../v1.0/workflow.html">1.0 file workflows</a></nav></footer></main><div class="fr-toasts" id="preview-toasts" role="region" aria-label="Notifications" tabindex="-1"></div></body></html>
+
+
+
+
+

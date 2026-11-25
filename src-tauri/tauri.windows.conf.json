@@ -1,0 +1,15 @@
+{
+  "app": {
+    "windows": [
+      {
+        "title": "FruityQR",
+        "width": 920,
+        "height": 690,
+        "visible": false,
+        "minWidth": 440,
+        "minHeight": 480,
+        "decorations": false
+      }
+    ]
+  }
+}

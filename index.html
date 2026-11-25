@@ -1,0 +1,155 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FruityQR</title>
+  <link rel="icon" type="image/png" href="/src-tauri/icons/32x32.png?no-inline">
+  <link rel="stylesheet" href="/src/styles/app.css">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body class="fr-window qr-window">
+  <div class="qr-background" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <header class="fr-titlebar fr-titlebar--glass">
+    <div class="fr-titlebar__drag" id="window-drag">
+      <img src="/src-tauri/icons/32x32.png?no-inline" width="18" height="18" alt="">
+      <h1 class="fr-titlebar__title">FruityQR</h1>
+    </div>
+    <div class="fr-titlebar__controls" id="window-controls" hidden>
+      <button class="fr-caption" id="minimize" type="button" aria-label="Minimize"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h10"/></svg></button>
+      <button class="fr-caption fr-caption--close" id="close" type="button" aria-label="Close"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 2 8 8m0-8-8 8"/></svg></button>
+    </div>
+  </header>
+  <div class="qr-scroll fr-glass-scrollbar">
+  <main class="qr-workspace">
+    <form id="editor" class="fr-panel fr-panel--glass qr-panel">
+      <h2 class="fr-subheading">Create a QR code</h2>
+      <div class="fr-tabs" data-fr-tabs>
+        <div class="fr-tabs__list" role="tablist" aria-label="Content type">
+          <button class="fr-tab" type="button" id="url-tab" role="tab" aria-selected="true" aria-controls="url-panel">URL</button>
+          <button class="fr-tab" type="button" id="text-tab" role="tab" aria-selected="false" aria-controls="text-panel">Text</button>
+          <button class="fr-tab" type="button" id="wifi-tab" role="tab" aria-selected="false" aria-controls="wifi-panel">Wi-Fi</button>
+        </div>
+        <div class="fr-tabs__panel qr-fields" id="url-panel" role="tabpanel" aria-labelledby="url-tab">
+          <label class="fr-field"><span class="fr-label">Web address</span><input class="fr-input" id="url" type="text" inputmode="url" placeholder="example.com" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="url-error"></label>
+          <p class="fr-field-error" id="url-error" hidden></p>
+        </div>
+        <div class="fr-tabs__panel qr-fields" id="text-panel" role="tabpanel" aria-labelledby="text-tab" hidden>
+          <label class="fr-field"><span class="fr-label">Text</span><textarea class="fr-input" id="text" rows="3" placeholder="Enter text" autocomplete="off"></textarea></label>
+        </div>
+        <div class="fr-tabs__panel qr-fields" id="wifi-panel" role="tabpanel" aria-labelledby="wifi-tab" hidden>
+          <label class="fr-field"><span class="fr-label">Network name (SSID)</span><input class="fr-input" id="ssid" autocomplete="off"></label>
+          <div class="fr-field"><label class="fr-label" id="security-label" for="security">Security</label><select class="fr-select" id="security"><option value="WPA">WPA / WPA2</option><option value="WEP">WEP</option><option value="nopass">Open network</option></select></div>
+          <label class="fr-field" id="password-field"><span class="fr-label">Password</span><input class="fr-input" id="password" type="password" autocomplete="new-password"></label>
+          <label class="fr-choice"><input type="checkbox" id="hidden-network"> Hidden network</label>
+          <p class="fr-help">Anyone who scans this QR code can read the network credentials.</p>
+        </div>
+      </div>
+      <div class="fr-field-divider"></div>
+      <h2 class="fr-subheading">Appearance</h2>
+      <div class="qr-colors">
+        <button class="fr-button" type="button" id="foreground" data-fr-open-dialog="color-dialog"><span class="fr-color-chip" aria-hidden="true"></span>Foreground</button>
+        <button class="fr-button" type="button" id="background" data-fr-open-dialog="color-dialog"><span class="fr-color-chip" aria-hidden="true"></span>Background</button>
+        <button class="fr-button" type="button" id="swap-colors" aria-label="Swap foreground and background" data-fr-tooltip="swap-tip" aria-describedby="swap-tip"><span class="qr-swap-arrow" aria-hidden="true">⇄</span> Swap</button>
+      </div>
+      <div class="fr-field"><label class="fr-label" id="size-label" for="size">PNG size</label><select class="fr-select" id="size"><option value="256">256 px</option><option value="512" selected>512 px</option><option value="1024">1024 px</option><option value="2048">2048 px</option></select></div>
+      <details class="fr-disclosure fr-disclosure--glass qr-advanced">
+        <summary>Advanced</summary>
+        <div class="fr-disclosure__body qr-fields">
+          <div class="fr-field"><label class="fr-label" id="margin-label" for="margin">Quiet zone</label><select class="fr-select" id="margin"><option value="4">4 modules</option><option value="6">6 modules</option><option value="8">8 modules</option><option value="12">12 modules</option></select></div>
+          <div class="fr-field">
+            <div class="qr-setting-label">
+              <label class="fr-label" id="correction-label" for="correction">Error correction</label>
+              <button class="fr-button fr-button--compact fr-button--glass-quiet qr-advanced-help" type="button" data-fr-tooltip="correction-tip" aria-label="About error correction" aria-describedby="correction-tip">?</button>
+            </div>
+            <select class="fr-select" id="correction"><option value="L">L · Low</option><option value="M" selected>M · Medium</option><option value="Q">Q · Quartile</option><option value="H">H · High</option></select>
+          </div>
+        </div>
+      </details>
+      <div class="qr-actions">
+        <button class="fr-button fr-button--compact fr-button--danger-hover" type="button" id="reset-appearance">Reset appearance</button>
+        <button class="fr-button fr-button--compact fr-button--glass-quiet fr-button--danger-hover" type="button" id="reset">Reset all</button>
+      </div>
+    </form>
+    <section class="fr-panel fr-panel--glass qr-panel" aria-labelledby="preview-heading">
+      <h2 class="fr-subheading" id="preview-heading">Live preview</h2>
+      <div class="qr-preview-frame">
+        <span class="qr-preview-leaves" aria-hidden="true"></span>
+        <div class="qr-preview" id="preview">
+          <div class="qr-empty-preview" id="empty-preview">
+            <p class="fr-help" id="preview-hint">Enter a web address to get started.</p>
+            <button class="fr-button fr-button--primary fr-button--hero qr-example" id="try-example" type="button">Try an example</button>
+          </div>
+          <canvas id="matrix" role="img" aria-label="Generated QR code" hidden></canvas>
+        </div>
+      </div>
+      <div class="qr-export">
+        <button class="fr-button" id="copy" type="button" disabled>Copy image</button>
+        <button class="fr-button" id="save-svg" type="button" disabled>Save SVG</button>
+        <button class="fr-button fr-button--primary fr-button--hero qr-save-main" id="save-png" type="button" disabled>Save PNG</button>
+      </div>
+      <div class="fr-action-notice" id="scan-warning" hidden>
+        <p class="fr-action-notice__body" id="scan-warning-message" role="status"></p>
+        <button class="fr-button fr-button--compact" id="warning-swap" type="button" data-fr-tooltip="warning-swap-tip" aria-describedby="warning-swap-tip" hidden>Swap colors</button>
+        <button class="fr-button fr-button--compact" id="warning-reset" type="button" hidden>Reset colors</button>
+      </div>
+      <p class="fr-status-strip" id="status" role="status" hidden></p>
+    </section>
+    <footer class="fr-footer qr-footer">
+      <span class="fr-footer__status"><span class="fr-statusbar__light" aria-hidden="true"></span>FruityUI <span id="footer-ui-version"></span></span>
+      <button class="fr-help-button" type="button" data-fr-open-dialog="about"><span aria-hidden="true">?</span> Help &amp; About</button>
+    </footer>
+  </main>
+  </div>
+  <div class="fr-tooltip" id="correction-tip" role="tooltip" hidden>From L to H, higher correction makes the QR code more resilient to damage and leaves less room for content.</div>
+  <div class="fr-tooltip" id="swap-tip" role="tooltip" hidden>Swap foreground and background. Dark modules on a light background usually scan better.</div>
+  <div class="fr-tooltip" id="warning-swap-tip" role="tooltip" hidden>Put the darker color in front so the QR code is easier to scan.</div>
+  <dialog class="fr-dialog fr-dialog--help" id="color-dialog" aria-labelledby="color-heading">
+    <header class="fr-dialog__header fr-about-header"><h2 class="fr-subheading" id="color-heading">Choose a color</h2></header>
+    <div class="fr-dialog__body qr-fields">
+      <div class="fr-sv-picker" id="color-area" role="group" tabindex="0" aria-label="Saturation and value" aria-describedby="color-keys color-value"><span class="fr-sv-picker__marker"></span></div>
+      <p class="fr-help" id="color-keys">Use the arrow keys to adjust saturation and brightness.</p>
+      <p class="fr-help" id="color-value"></p>
+      <label class="fr-field"><span class="fr-label">Hue</span><input class="fr-hue-slider" id="color-hue" type="range" min="0" max="359.999" step="any"></label>
+      <label class="fr-field"><span class="fr-label">Hex color</span><input class="fr-input fr-mono" id="color-hex" spellcheck="false" autocomplete="off" aria-describedby="color-error"></label>
+      <p class="fr-field-error" id="color-error" hidden></p>
+    </div>
+    <form method="dialog" class="fr-dialog__actions"><button class="fr-button" type="submit" value="cancel">Cancel</button><button class="fr-button fr-button--primary" id="apply-color" type="submit" value="apply">Apply</button></form>
+  </dialog>
+  <dialog class="fr-dialog fr-dialog--help fr-dialog--scroll-body" id="about" aria-labelledby="about-heading">
+    <header class="fr-dialog__header fr-about-header">
+      <img src="/src-tauri/icons/128x128.png" width="60" height="60" alt="">
+      <div><h2 class="fr-subheading" id="about-heading">FruityQR</h2><p class="fr-help">Create and share QR codes.</p></div>
+    </header>
+    <div class="fr-dialog__body fr-glass-scrollbar" tabindex="0" role="region" aria-label="FruityQR help and licenses">
+      <p>Generate QR codes for links, text, and Wi-Fi networks. Your content stays on your device.</p>
+      <h3 class="fr-subheading">How to use</h3>
+      <ol class="qr-help-steps">
+        <li>Choose URL, Text, or Wi-Fi and enter the content. A web address without a scheme uses HTTPS.</li>
+        <li>Adjust the colors or QR settings and check the live preview.</li>
+        <li>Copy the image, save a PNG at the selected size, or save a scalable SVG.</li>
+      </ol>
+      <dl class="fr-shortcuts">
+        <div><dt>Adjust the color picker</dt><dd><kbd class="fr-key">Arrow keys</kbd></dd></div>
+        <div><dt>Adjust in larger steps</dt><dd><kbd class="fr-key">Shift</kbd> + <kbd class="fr-key">Arrow keys</kbd></dd></div>
+        <div><dt>Close the dialog</dt><dd><kbd class="fr-key">Esc</kbd></dd></div>
+      </dl>
+      <p class="fr-help">FruityQR <span id="app-version"></span> · MIT License · Part of the Fruity Suite<br>FruityUI <span id="ui-version"></span> · MIT License</p>
+      <details class="fr-disclosure">
+        <summary>Licenses and notices</summary>
+        <div class="fr-disclosure__body qr-fields">
+          <section aria-labelledby="app-license-heading">
+            <h3 class="fr-subheading" id="app-license-heading">FruityQR</h3>
+            <pre class="fr-mono qr-license" id="app-license"></pre>
+          </section>
+          <section aria-labelledby="ui-license-heading">
+            <h3 class="fr-subheading" id="ui-license-heading">FruityUI</h3>
+            <pre class="fr-mono qr-license" id="ui-license"></pre>
+          </section>
+        </div>
+      </details>
+    </div>
+    <form method="dialog" class="fr-dialog__actions"><button type="submit" class="fr-button fr-button--primary" autofocus>Done</button></form>
+  </dialog>
+</body>
+</html>

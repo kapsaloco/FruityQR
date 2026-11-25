@@ -1,0 +1,16 @@
+/* FruityUI v1.0 — portable presentation stylesheet. */
+@layer reset, tokens, base, fruity, app, accessibility;
+@import url("./tokens.css") layer(tokens);
+@import url("./base.css") layer(base);
+@import url("./window.css") layer(fruity);
+@import url("./surfaces.css") layer(fruity);
+@import url("./buttons.css") layer(fruity);
+@import url("./forms.css") layer(fruity);
+@import url("./progress.css") layer(fruity);
+@import url("./feedback.css") layer(fruity);
+@import url("./components.css") layer(fruity);
+@import url("./workflow.css") layer(fruity);
+@import url("./animations.css") layer(fruity);
+@import url("./utility.css") layer(fruity);
+@import url("./accessibility.css") layer(accessibility);
+@layer reset { *, *::before, *::after { box-sizing: border-box; } }

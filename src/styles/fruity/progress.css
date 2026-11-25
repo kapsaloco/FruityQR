@@ -1,0 +1,48 @@
+/* Use a native <progress> with max="100" and a truthful value. Omit value for unknown work. */
+.fr-progress { display: block; appearance: none; -webkit-appearance: none; width: 100%; height: 18px; overflow: hidden; border: 1px solid var(--fr-border); border-radius: 4px; background: linear-gradient(#dbe7ef, #f7fbfe); box-shadow: inset 0 1px 3px rgb(24 59 82 / 15%); color: var(--fr-progress-mid); }
+.fr-progress::-webkit-progress-bar { background: linear-gradient(#dbe7ef, #f7fbfe); }
+.fr-progress::-webkit-progress-value { background: linear-gradient(180deg, var(--fr-progress-light) 0%, #a9e66c 42%, var(--fr-progress-mid) 43%, var(--fr-progress-deep) 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 75%); }
+.fr-progress::-moz-progress-bar { background: linear-gradient(180deg, var(--fr-progress-light) 0%, #a9e66c 42%, var(--fr-progress-mid) 43%, var(--fr-progress-deep) 100%); }
+.fr-progress:not([value]) { background: linear-gradient(90deg, transparent, var(--fr-progress-light), var(--fr-progress-mid), transparent) 0 0 / 40% 100% no-repeat, #e4eef5; }
+.fr-progress:not([value])::-webkit-progress-bar { background: transparent; }
+.fr-progress:not([value])::-moz-progress-bar { background: transparent; }
+
+.fr-spinner { display: inline-block; width: 16px; height: 16px; flex-shrink: 0; border: 2px solid var(--fr-border-soft); border-top-color: currentColor; border-radius: 50%; animation: fr-spin .8s linear infinite; }
+
+/* Animated alternative to native progress. The caller owns value, ARIA and phase.
+   Set --fr-progress-value from real progress (0%–100%). */
+.fr-meter {
+  height: 18px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--fr-border);
+  border-radius: 4px;
+  background: linear-gradient(#dbe7ef, #f7fbfe);
+  box-shadow: inset 0 1px 3px rgb(24 59 82 / 15%);
+}
+.fr-meter__fill {
+  position: relative;
+  width: var(--fr-progress-value, 0%);
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, #d9ffa8, #9ce94f 42%, #61c526 43%, #318519);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 85%);
+  transition: width 100ms linear;
+}
+.fr-meter__fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 25%, rgb(255 255 255 / 60%) 50%, transparent 75%);
+  transform: translateX(-100%);
+  pointer-events: none;
+  opacity: 0;
+}
+.fr-meter[data-state="active"] .fr-meter__fill::after {
+  animation: fr-meter-sheen 1.8s ease-in-out infinite;
+}
+.fr-meter[data-state="indeterminate"] .fr-meter__fill {
+  width: 35%;
+  animation: fr-meter-sweep 1.8s ease-in-out infinite;
+}
+/* Paused/canceled/complete meters have no continuous animation. */

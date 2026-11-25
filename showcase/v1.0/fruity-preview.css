@@ -1,0 +1,16 @@
+@layer app {
+  .preview { display: grid; gap: 16px; max-width: 900px; padding: 32px 16px; margin-inline: auto; }
+  .preview-stack { display: grid; gap: 12px; }
+  .preview-glass { padding: 20px; border-radius: 9px; background: radial-gradient(ellipse at 8% 0%, #efffff, transparent 65%), linear-gradient(120deg, #83d4f5, #bcecfb 48%, #74c9eb); }
+  .preview-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .preview-nav { display: flex; flex-wrap: wrap; gap: 4px; padding: 5px; border: 1px solid #70b3d1; border-radius: 9px; background: rgb(239 252 255 / 85%); }
+  .preview-nav a { padding: 8px 12px; border-radius: 5px; text-decoration: none; }
+  .preview-nav a:hover { background: #d4f3ff; }
+  .preview-nav a[aria-current="page"] { background: #075d91; color: #fff; font-weight: 600; }
+  @media (forced-colors: active) {
+    .preview-nav a[aria-current="page"] { background: Highlight; color: HighlightText; }
+  }
+  .preview-stack > * { min-width: 0; }
+  .preview pre { max-width: 100%; overflow-x: auto; white-space: pre-wrap; font-size: 12px; }
+  .preview code { overflow-wrap: anywhere; }
+}
